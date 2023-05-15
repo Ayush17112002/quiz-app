@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 export default function Tabs(props) {
   const state = useSelector((state) => state);
@@ -17,7 +17,7 @@ export default function Tabs(props) {
               check2 ? "bg-green-400" : ""
             }`}
           >
-            {question.name}
+            {index}
           </div>
         );
       })}
