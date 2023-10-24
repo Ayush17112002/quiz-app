@@ -14,6 +14,7 @@ export default function Home() {
       try {
         const res = await axios.get(`${url}/category/`);
         if (res.statusText === "OK") {
+          console.log(res.data);
           setCategories(() => res.data.docs);
         } else {
           throw new Error("error");
@@ -26,7 +27,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="home bg-purple-500 flex items-center justify-center flex-col h-screen">
+    <div className="home bg-gradient-to-b from-[#374CE7] to-[rgba(55, 76, 231, 0.00)] flex items-center justify-center flex-col h-screen">
       {error ? (
         <Error></Error>
       ) : (

@@ -24,11 +24,11 @@ export default function Quiz() {
   });
   const showHandler = (e) => {
     setQuestionOnScreen(() => e.target.id);
-    console.log(
-      state.answered,
-      e.target.id,
-      typeof state.answered[e.target.id]
-    );
+    // console.log(
+    //   state.answered,
+    //   e.target.id,
+    //   typeof state.answered[e.target.id]
+    // );
     const tmp = {
       0: state.answered[e.target.id] === 0 ? true : false,
       1: state.answered[e.target.id] === 1 ? true : false,
