@@ -13,7 +13,7 @@ function App() {
       window.location.href === `${url}quiz` ||
       window.location.href === `${url}result`
     ) {
-      window.history.go(1);
+      window.history.go();
     }
   });
   return (

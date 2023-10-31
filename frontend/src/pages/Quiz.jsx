@@ -24,11 +24,6 @@ export default function Quiz() {
   });
   const showHandler = (e) => {
     setQuestionOnScreen(() => e.target.id);
-    // console.log(
-    //   state.answered,
-    //   e.target.id,
-    //   typeof state.answered[e.target.id]
-    // );
     const tmp = {
       0: state.answered[e.target.id] === 0 ? true : false,
       1: state.answered[e.target.id] === 1 ? true : false,
@@ -58,7 +53,6 @@ export default function Quiz() {
     //console.log(who);
     dispatch(actions.setAnswer({ q: questionOnScreen, a: who }));
   };
-  //console.log(options);
   const answerHandler = (e) => {
     setOptions(() => {
       return { ...options, answer: e.target.value };
@@ -66,7 +60,6 @@ export default function Quiz() {
     dispatch(actions.setAnswer({ q: "answer", a: e.target.value }));
   };
   const submitHandler = (e) => {
-    //console.log("Fdfd");
     navigate("/result");
   };
   useEffect(() => {
