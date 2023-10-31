@@ -12,18 +12,6 @@ const createQuestion = async (req, res) => {
     explanation = explanation.trim();
     let Question = await questionModel.findOne({ name: name });
     let Category = await categoryModel.findOne({ name: category });
-    // console.log(
-    //   Question,
-    //   Category,
-    //   name,
-    //   choice,
-    //   mcq,
-    //   answer,
-    //   solution,
-    //   explanation,
-    //   Category._id,
-    //   lod
-    // );
     if (Question) {
       throw new Error("question duplicate");
     } else if (!Category) {

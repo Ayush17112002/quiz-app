@@ -17,6 +17,7 @@ const createCategory = async (req, res) => {
 const getCategory = async (req, res) => {
   try {
     const categories = await categoryModel.find({}, { _id: 0, __v: 0 });
+    console.log(categories);
     return res.status(200).json({ success: true, docs: categories });
   } catch (err) {
     return res.status(400).json({ success: false, err: err.name });
