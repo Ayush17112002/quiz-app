@@ -9,11 +9,10 @@ const url = "http://localhost:3000/";
 function App() {
   const state = useSelector((state) => state);
   window.addEventListener("popstate", (e) => {
-    if (
-      window.location.href === `${url}quiz` ||
-      window.location.href === `${url}result`
-    ) {
+    if (window.location.href === `${url}quiz`) {
       window.history.go();
+    } else if (window.location.href === `${url}result`) {
+      window.history.go((window.history.length - 1) * -1);
     }
   });
   return (
