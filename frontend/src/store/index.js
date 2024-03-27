@@ -80,7 +80,7 @@ export const thunkMiddlewaretoGetResults = (setError) => {
         { headers: { "Content-Type": "application/json" } }
       );
       //console.log(res);
-      if (res.statusText === "OK") {
+      if (res.status === 200) {
         dispatch(actions.setResults(res.data.docs));
         setError((prev) => {
           dispatch(actions.endSession());

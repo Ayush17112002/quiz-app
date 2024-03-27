@@ -13,13 +13,15 @@ export default function Home() {
     const fun = async () => {
       try {
         const res = await axios.get(`${url}/category/`);
-        if (res.statusText === "OK") {
+        console.log(res);
+        if (res.status === 200) {
           console.log(res.data);
           setCategories(() => res.data.docs);
         } else {
           throw new Error("error");
         }
       } catch (err) {
+        console.log(err);
         setError(() => true);
       }
     };

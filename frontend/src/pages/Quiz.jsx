@@ -67,7 +67,7 @@ export default function Quiz() {
       try {
         //console.log(`${url}/quiz/${state.category}`);
         const res = await axios.get(`${url}/quiz/${state.category}`);
-        if (res.statusText === "OK") {
+        if (res.status === 200) {
           dispatch(actions.setQuiz(res.data.quiz));
           setError((err) => {
             return { isLoading: false, error: false };
