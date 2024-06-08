@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import styles from "./Home.module.css";
 import axios from "axios";
 import Category from "../components/Category";
 import Error from "../components/Error";
 const port = process.env.REACT_APP_PORT;
 const url = process.env.REACT_APP_URL;
+
 export default function Home() {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(false);
@@ -29,7 +31,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="home bg-gradient-to-b from-[#374CE7] to-[rgba(55, 76, 231, 0.00)] flex items-center justify-center flex-col h-screen">
+    <div className={styles.home}>
       {error ? (
         <Error></Error>
       ) : (

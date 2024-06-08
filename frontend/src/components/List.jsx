@@ -1,9 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import styles from "./List.module.css";
+
 export default function Tabs(props) {
   const state = useSelector((state) => state);
   return (
-    <div className="list grid grid-rows-10 grid-flow-row gap-2 h-screen w-1/4">
+    <div className={styles.list}>
       {state.quiz.map((question, index) => {
         const check = props.questionOnScreen == index;
         const check2 =
@@ -13,9 +15,7 @@ export default function Tabs(props) {
             id={index}
             key={index}
             onClick={props.showHandler}
-            className={`border-4 ${check ? "border-black" : ""} ${
-              check2 ? "bg-green-400" : ""
-            }`}
+            className={`${styles.index} ${check2 && styles.checked}`}
           >
             {index}
           </div>

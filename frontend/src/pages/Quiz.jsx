@@ -7,6 +7,7 @@ import { actions } from "../store";
 import { useNavigate } from "react-router-dom";
 import Tabs from "../components/List";
 import Error from "../components/Error";
+import styles from "./Quiz.module.css";
 const url = process.env.REACT_APP_URL;
 
 export default function Quiz() {
@@ -50,7 +51,6 @@ export default function Quiz() {
     setOptions((prev) => {
       return obj;
     });
-    //console.log(who);
     dispatch(actions.setAnswer({ q: questionOnScreen, a: who }));
   };
   const answerHandler = (e) => {
@@ -65,7 +65,6 @@ export default function Quiz() {
   useEffect(() => {
     const fun = async () => {
       try {
-        //console.log(`${url}/quiz/${state.category}`);
         const res = await axios.get(`${url}/quiz/${state.category}`);
         if (res.status === 200) {
           dispatch(actions.setQuiz(res.data.quiz));
@@ -88,24 +87,21 @@ export default function Quiz() {
       fun();
     }
   }, [state]);
-  //console.log(error);
   return (
-    <div className="quiz">
-      {error.error && <Error></Error>}
-      {error.isLoading && <div>Loading</div>}
+    <div className={styles.quiz}>
+      {error.error && <Error>Error</Error>}
+      {error.isLoading && <Error>Loading</Error>}
       {!error.isLoading && !error.error && (
-        <div className="flex flex-row">
+        <div className={styles.container}>
           <Tabs showHandler={showHandler} questionOnScreen={questionOnScreen} />
-          <div className="question m-10">
-            <p className="d-flex flex-row align-top justify-start">
-              {state.quiz[questionOnScreen].name}
-            </p>
+          <div className={styles.question}>
+            <p className={styles.name}>{state.quiz[questionOnScreen].name}</p>
             {state.quiz[questionOnScreen].mcq ? (
               <>
-                <div className="flex flex-row">
+                <div className={styles.checkBox}>
                   <input
                     type="checkbox"
-                    className="  checked:bg-blue-500 w-5 h-5 m-5"
+                    className={styles.checkBoxInput}
                     id="0"
                     checked={options[0]}
                     onChange={checkBoxHandler}
@@ -114,10 +110,10 @@ export default function Quiz() {
                     {state.quiz[questionOnScreen].choice[0]}
                   </div>
                 </div>
-                <div className="flex flex-row">
+                <div className={styles.checkBox}>
                   <input
                     type="checkbox"
-                    className="checked:bg-blue-500 w-5 h-5 m-5"
+                    className={styles.checkBoxInput}
                     id="1"
                     checked={options[1]}
                     onChange={checkBoxHandler}
@@ -126,11 +122,11 @@ export default function Quiz() {
                     {state.quiz[questionOnScreen].choice[1]}
                   </div>
                 </div>
-                <div className="flex flex-row">
+                <div className={styles.checkBox}>
                   <input
                     checked={options[2]}
                     type="checkbox"
-                    className="checked:bg-blue-500 w-5 h-5 m-5"
+                    className={styles.checkBoxInput}
                     id="2"
                     onChange={checkBoxHandler}
                   ></input>
@@ -138,11 +134,11 @@ export default function Quiz() {
                     {state.quiz[questionOnScreen].choice[2]}
                   </div>
                 </div>
-                <div className="flex flex-row">
+                <div className={styles.checkBox}>
                   <input
                     type="checkbox"
                     checked={options[3]}
-                    className="checked:bg-blue-500 w-5 h-5 m-5"
+                    className={styles.checkBoxInput}
                     id="3"
                     onChange={checkBoxHandler}
                   ></input>
@@ -157,11 +153,7 @@ export default function Quiz() {
               </>
             )}
           </div>
-          <button
-            type="submit"
-            className="bottom-0 right-0 absolute w-28 h-10 mb-5 mr-5 rounded-md bg-red-500 font-semibold"
-            onClick={submitHandler}
-          >
+          <button type="submit" className={styles.btn} onClick={submitHandler}>
             End Test
           </button>
         </div>
