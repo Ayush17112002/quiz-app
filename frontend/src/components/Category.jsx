@@ -13,7 +13,11 @@ export default function Category(props) {
   return (
     <div className={styles.category}>
       <div className={styles.name}>
-        <Link to="prompt" onClick={categoryHandler} className={`${props.name}`}>
+        <Link
+          to="prompt"
+          onClick={categoryHandler}
+          className={`${props.name} ${styles.name}`}
+        >
           {props.name}
         </Link>
       </div>

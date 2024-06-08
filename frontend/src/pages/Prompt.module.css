@@ -43,5 +43,6 @@
     font-weight: 600;
     background-color: red;
     filter: brightness(80%);
+    text-decoration: none;
 }
 

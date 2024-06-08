@@ -10,7 +10,8 @@
     transform: scale(1.2);
 }
 .category .name{
-    color:#FDE2F3;
+    color:white;
     font-size: 1.25rem;
     font-weight: 600;
+    text-decoration: none;
 }
