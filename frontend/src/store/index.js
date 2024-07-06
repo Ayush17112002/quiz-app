@@ -1,6 +1,15 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+/**
+ * {
+ *  name: string,
+ *  quiz: [{}, {}, {}, ...] ,Array of objects, each object representing 1 question
+ *  token: string,
+ *  hasBegun: boolean,
+ *  category: string,
+ *  answered: {index of question: option chosen}
+ * }
+ */
 const initialState = {};
 
 if (localStorage.hasOwnProperty("name")) {
